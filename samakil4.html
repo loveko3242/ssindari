@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5월 가정의달 특별할인</title>
+  <style>
+    @font-face {
+      font-family: 'Pretandard Regular';
+      src: url('Pretendard-Regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Pretandard ExtraBold';
+      src: url('Pretendard-ExtraBold.woff2') format('woff2');
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #fff2e5;
+      font-family: 'Pretandard Regular', 'Pretandard ExtraBold', sans-serif;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 30px 20px 0px;
+      box-sizing: border-box;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      gap: 18px;
+    }
+
+    .event-title {
+      font-family: 'Pretandard ExtraBold', sans-serif;
+      font-size: clamp(27px, 4vw, 48px);
+      color: #de172e;
+      font-weight: normal;
+      line-height: 0.4;
+    }
+
+    .price {
+      font-family: 'Pretandard ExtraBold', sans-serif;
+      font-size: clamp(27px, 4vw, 48px);
+      font-weight: normal;
+      color: #000;
+      line-height: 0.4;
+      margin-bottom: 0px;
+    }
+
+    .alert {
+      font-family: 'Pretandard Regular', sans-serif;
+      font-size: clamp(15px, 3.5vw, 24px);
+      color: #000;
+      font-weight: normal;
+      line-height: 0.5;
+      margin-bottom: 0px;
+    }
+
+    .timer {
+      font-family: 'Pretandard ExtraBold', sans-serif;
+      font-size: clamp(27px, 4vw, 48px);
+      color: #000;
+      font-weight: normal;
+      background-color: white;
+      border: 2px solid #000;
+      padding: 8px 40px;
+      border-radius: 100px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      display: inline-block;
+      line-height: 0.6;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="event-title">5월 가정의달 특별할인</div>
+    <div style="height: 8px;"></div>
+    <div class="price">59,000원 → 49,000원</div>
+    <div class="alert">5월 6일 화요일까지만 할인!</div>
+    <div class="timer" id="timer">마감 --:--:--</div>
+  </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    updateKSTTimer();
+    setInterval(updateKSTTimer, 1000);
+  });
+
+  function updateKSTTimer() {
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const koreaNow = new Date(utc + (9 * 60 * 60 * 1000));
+
+    const endDate = new Date("2025-05-06T23:59:59+09:00");
+
+    const diff = endDate - koreaNow;
+
+    if (diff <= 0) {
+      document.getElementById("timer").innerText = "마감 00:00:00";
+      return;
+    }
+
+    const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, "0");
+    const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+    const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+    document.getElementById("timer").innerText = `마감 ${hours}:${minutes}:${seconds}`;
+  }
+</script>
+</body>
+</html>
