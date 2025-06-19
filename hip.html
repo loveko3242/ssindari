@@ -101,10 +101,7 @@
 </head>
 <body>
   <div class="container">
-    <div class="line">1차 입고수량 (완판)</div>
-    <div class="line">2차 입고수량 (완판)</div>
-    <div style="height: 8px;"></div>
-    <div class="event-title">3차 입고 EVENT</div>
+    <div class="event-title"> 입고 할인 EVENT</div>
     <div class="event-date" id="event-date">(날짜 로딩 중)</div>
     <div class="price">세트 구매시 30% 할인</div>
     <div style="height: 8px;"></div>
@@ -119,7 +116,7 @@
       const koreaTime = new Date(utc + (9 * 60 * 60 * 1000));
       const month = koreaTime.getMonth() + 1;
       const date = koreaTime.getDate();
-      document.getElementById("event-date").innerText = `${month}/${date} 오늘만 1+1!`;
+      document.getElementById("event-date").innerText = `${month}/${date} 단 하루!`;
 
       updateKSTTimer();
       setInterval(updateKSTTimer, 1000);
