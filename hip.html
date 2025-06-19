@@ -18,7 +18,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      background-color: #fff2ee;
+      background-color: #f8eee6;
       font-family: 'Pretandard Regular', 'Pretandard ExtraBold', sans-serif;
     }
 
@@ -47,7 +47,7 @@
     .event-title {
       font-family: 'Pretandard ExtraBold', sans-serif;
       font-size: clamp(27px, 4vw, 48px);
-      color: #7c2b15;
+      color: #675343;
       font-weight: normal;
       line-height: 0.4;
     }
@@ -56,12 +56,12 @@
       font-family: 'Pretandard ExtraBold', sans-serif;
       font-size: clamp(27px, 4vw, 48px);
       font-weight: normal;
-      background-color: #7c2b15;
-      color: white;
+      background-color: #675343;
+      color: #f8eee6;
       padding: 10px 28px;
       border-radius: 100px;
       display: inline-block;
-      line-height: 0.6;
+      line-height: 0.6;iㅑ
       margin-bottom: 0px;
     }
 
@@ -106,9 +106,9 @@
     <div style="height: 8px;"></div>
     <div class="event-title">3차 입고 EVENT</div>
     <div class="event-date" id="event-date">(날짜 로딩 중)</div>
-    <div class="price">59,900원 → 49,900원</div>
+    <div class="price">세트 구매시 30% 할인</div>
     <div style="height: 8px;"></div>
-    <div class="alert">이벤트 종료시 무조건 가격 인상됩니다</div>
+    <div class="alert">이벤트 종료시 정가 판매됩니다</div>
     <div class="timer" id="timer">마감 --:--:--</div>
   </div>
 
@@ -119,7 +119,7 @@
       const koreaTime = new Date(utc + (9 * 60 * 60 * 1000));
       const month = koreaTime.getMonth() + 1;
       const date = koreaTime.getDate();
-      document.getElementById("event-date").innerText = `${month}/${date} 오늘만 할인!`;
+      document.getElementById("event-date").innerText = `${month}/${date} 오늘만 1+1!`;
 
       updateKSTTimer();
       setInterval(updateKSTTimer, 1000);
