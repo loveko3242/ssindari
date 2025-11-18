@@ -1,130 +1,141 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>오늘의딜 EVENT</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: #fbe3c4;
-      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오늘의딜 EVENT</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #fbe3c4;
+      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    }
 
-    .container {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 30px 20px 0px;
-      box-sizing: border-box;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      gap: 18px;
-    }
+    .container {
+      /* 최대 너비를 1440px로 확장 */
+      max-width: 1440px; 
+      margin: 0 auto;
+      /* 여백도 약 2.25배 증가: 30px -> 67px, 20px -> 45px */
+      padding: 67px 45px 0px; 
+      box-sizing: border-box;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      /* 간격도 약 2.25배 증가: 18px -> 40px */
+      gap: 40px;
+    }
 
-    .line {
-      font-size: clamp(22px, 4.5vw, 38px);
-      color: #000;
-      font-weight: bold;
-      text-decoration: line-through;
-      line-height: 1.6;
-    }
+    .line {
+      /* 폰트 크기 약 2.25배 증가: 22px -> 50px, 38px -> 85px */
+      font-size: clamp(50px, 4.5vw, 85px);
+      color: #000;
+      font-weight: bold;
+      text-decoration: line-through;
+      line-height: 1.6;
+    }
 
-    .event-title {
-      font-size: clamp(38px, 6vw, 56px);
-      color: red;
-      font-weight: bold;
-      line-height: 1.6;
-    }
+    .event-title {
+      /* 폰트 크기 약 2.25배 증가: 38px -> 85px, 56px -> 126px */
+      font-size: clamp(85px, 6vw, 126px);
+      color: red;
+      font-weight: bold;
+      line-height: 1.6;
+    }
 
-    .event-date {
-      font-size: clamp(32px, 6vw, 52px);
-      font-weight: bold;
-      background-color: red;
-      color: white;
-      padding: 10px 28px;
-      border-radius: 100px;
-      display: inline-block;
-      line-height: 1.6;
-      margin-bottom: 22px; /* 👈 오늘만 할인 ↔ 가격 간격 늘림 */
-    }
+    .event-date {
+      /* 폰트 크기 약 2.25배 증가: 32px -> 72px, 52px -> 117px */
+      font-size: clamp(72px, 6vw, 117px);
+      font-weight: bold;
+      background-color: red;
+      color: white;
+      /* 패딩 약 2.25배 증가: 10px -> 22px, 28px -> 63px */
+      padding: 22px 63px;
+      border-radius: 100px;
+      display: inline-block;
+      line-height: 1.6;
+      /* 마진 약 2.25배 증가: 22px -> 50px */
+      margin-bottom: 50px; 
+    }
 
-    .price {
-      font-size: clamp(44px, 6.8vw, 62px);
-      font-weight: bold;
-      color: #000;
-      line-height: 1.2;      /* 👈 가격과 멘트 간격 줄이기 */
-      margin-bottom: 0px;    /* 👈 아래 기본 여백 제거 */
-    }
+    .price {
+      /* 폰트 크기 약 2.25배 증가: 44px -> 99px, 62px -> 140px */
+      font-size: clamp(99px, 6.8vw, 140px);
+      font-weight: bold;
+      color: #000;
+      line-height: 1.2;
+      margin-bottom: 0px; 
+    }
 
-    .alert {
-      font-size: clamp(22px, 4vw, 32px);
-      color: #000;
-      font-weight: 300;       /* 👈 Light 효과 */
-      line-height: 1.2;       /* 👈 줄 간격 좁힘 */
-      margin-top: -6px;       /* 👈 가격과 더 가까이 */
-      margin-bottom: 12px;    /* 👈 타이머와 간격 약간 띄우기 */
-    }
+    .alert {
+      /* 폰트 크기 약 2.25배 증가: 22px -> 50px, 32px -> 72px */
+      font-size: clamp(50px, 4vw, 72px);
+      color: #000;
+      font-weight: 300;
+      line-height: 1.2;
+      /* 마진 약 2.25배 증가: -6px -> -14px, 12px -> 27px */
+      margin-top: -14px;
+      margin-bottom: 27px;
+    }
 
-    .timer {
-      font-size: clamp(40px, 8vw, 57px);
-      color: #000;
-      font-weight: bold;
-      background-color: white;
-      border: 2px solid #000;
-      padding: 8px 40px; /* 👈 위아래 살짝 줄임 */
-      border-radius: 100px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      display: inline-block;
-      line-height: 1.4;
-    }
-  </style>
+    .timer {
+      /* 폰트 크기 약 2.25배 증가: 40px -> 90px, 57px -> 128px */
+      font-size: clamp(90px, 8vw, 128px);
+      color: #000;
+      font-weight: bold;
+      background-color: white;
+      border: 4px solid #000; /* 테두리도 2px -> 4px */
+      /* 패딩 약 2.25배 증가: 8px -> 18px, 40px -> 90px */
+      padding: 18px 90px;
+      border-radius: 100px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 그림자도 키움 */
+      display: inline-block;
+      line-height: 1.4;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="event-title">오늘의딜 EVENT</div>
-    <div class="event-date" id="event-date">(날짜 로딩 중)</div>
-    <div class="price">59,800 > 47,900원</div>
-    <div class="alert">이벤트 종료시 무조건 가격 인상됩니다!</div>
-    <div class="timer" id="timer">마감 전 --:--:--</div>
-  </div>
+  <div class="container">
+    <div class="event-title">오늘의딜 EVENT</div>
+    <div class="event-date" id="event-date">(날짜 로딩 중)</div>
+    <div class="price">59,800 > 47,900원</div>
+    <div class="alert">이벤트 종료시 무조건 가격 인상됩니다!</div>
+    <div class="timer" id="timer">마감 전 --:--:--</div>
+  </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const now = new Date();
-      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-      const koreaTime = new Date(utc + (9 * 60 * 60 * 1000));
-      const month = koreaTime.getMonth() + 1;
-      const date = koreaTime.getDate();
-      document.getElementById("event-date").innerText = `${month}/${date} 오늘만 할인!`;
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const koreaTime = new Date(utc + (9 * 60 * 60 * 1000));
+      const month = koreaTime.getMonth() + 1;
+      const date = koreaTime.getDate();
+      document.getElementById("event-date").innerText = `${month}/${date} 오늘만 할인!`;
 
-      updateKSTTimer();
-      setInterval(updateKSTTimer, 1000);
-    });
+      updateKSTTimer();
+      setInterval(updateKSTTimer, 1000);
+    });
 
-    function updateKSTTimer() {
-      const now = new Date();
-      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-      const koreaNow = new Date(utc + (9 * 60 * 60 * 1000));
-      const endOfDay = new Date(koreaNow);
-      endOfDay.setHours(23, 59, 59, 999);
-      const diff = endOfDay - koreaNow;
+    function updateKSTTimer() {
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const koreaNow = new Date(utc + (9 * 60 * 60 * 1000));
+      const endOfDay = new Date(koreaNow);
+      endOfDay.setHours(23, 59, 59, 999);
+      const diff = endOfDay - koreaNow;
 
-      if (diff <= 0) {
-        document.getElementById("timer").innerText = "마감 전 00:00:00";
-        return;
-      }
+      if (diff <= 0) {
+        document.getElementById("timer").innerText = "마감 전 00:00:00";
+        return;
+      }
 
-      const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, "0");
-      const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
-      const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
-      document.getElementById("timer").innerText = `마감 전 ${hours}:${minutes}:${seconds}`;
-    }
-  </script>
+      const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, "0");
+      const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+      const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+      document.getElementById("timer").innerText = `마감 전 ${hours}:${minutes}:${seconds}`;
+    }
+  </script>
 </body>
 </html>
-
-
